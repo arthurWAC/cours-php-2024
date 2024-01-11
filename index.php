@@ -110,6 +110,9 @@ $vrai || $faux; // => true
 $faux || $faux; // => false
 // || sont des additions : 1 + 1 + 1 + 0 + 1 + 1 => 5 != 0 donc c'est vrai
 
+// !, "not", "inverser la valeur"
+! $vrai; // => faux
+! $faux; // => vrai
 
 // Les constantes
 
