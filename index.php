@@ -110,3 +110,16 @@ $vrai || $faux; // => true
 $faux || $faux; // => false
 // || sont des additions : 1 + 1 + 1 + 0 + 1 + 1 => 5 != 0 donc c'est vrai
 
+
+// Les constantes
+
+// Ce sont des "super variables" dont la valeur ne change pas au fil du programme
+// On utilise une fonction pour définir la valeur
+// On nomme la constante en UPPER_CASE (convention)
+define('TAUX_TVA', 1.2);
+
+// Utilisation
+$prixHT = 10;
+$prixTTC = $prixHT * TAUX_TVA; // Pas de $
+
+// Les constantes sont accessibles dans la totalité du programme (fonctions, objets, etc.)
