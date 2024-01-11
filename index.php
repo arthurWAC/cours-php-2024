@@ -89,6 +89,24 @@ $start--;
 
 
 
+// Les booléens
 
+// On les écrit en minuscule
+$vrai = true;
+$faux = false;
 
+// Opérations booléennes
+// ET => && "double esperluette"
+// OU => || "double pipe" (touche 6 sur Windows)
+// On utilise pas "and" et "or"
+
+$vrai && $vrai; // => true
+$vrai && $faux; // => false
+$faux && $faux; // => false
+// && sont des multiplications 1 x 1 x 1 x 0 x 1 => 1 seul zéro et c'est false
+
+$vrai || $vrai; // => true
+$vrai || $faux; // => true
+$faux || $faux; // => false
+// || sont des additions : 1 + 1 + 1 + 0 + 1 + 1 => 5 != 0 donc c'est vrai
 
