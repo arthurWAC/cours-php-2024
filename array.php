@@ -48,6 +48,9 @@ $morpion = [
     ['X', 'O', 'O'],
 ];
 
+echo 'count morpion : ' . count($morpion); // 3, ne fait pas tous les niveaux
+echo '<br />';
+
 // Case du milieu
 echo $morpion[1][1];
 
@@ -94,6 +97,7 @@ $nombres[5] = 5;
 $nombres[5] = 6;
 
 $nombres[] = 777;
+$nombres[12] = null;
 
 echo '<pre>';
 print_r($nombres);
@@ -101,29 +105,58 @@ echo '</pre>';
 // ----------------------------------------------------------
 
 
-$moi = [
-    'prenom' => 'Arthur',
-    'nom' => 'Weill',
-    'age' => 36,
-    'languages' => ['PHP']
-];
-
-$toi = [
-    'prenom' => 'Louis',
-    'nom' => 'Steinmann',
-    'age' => 20,
-    'languages_informatiques' => ['HTML']
-];
-
-$quelquun = [
-    'prenom' => 'Louis',
-    'nom' => 'Steinmann',
-    'age' => 20,
-];
-
-
 // Enlever valeur
+unset($nombres[5]); // Je précise la clé
+unset($nombres[3]); // Particularité, si ça n'existe pas, ça ne crée pas d'erreur pour autant
+
 
 // Vérifie qu'une clé existe
+if (isset($nombres[12])) { // isset => "is set"
+    echo 'La clé 12 existe';
+} else {
+    echo 'La clé 12 n\'existe pas';
+}
+
+echo '<br />';
+
+// Variante à privilégier, risque d'effet de bord avec isset
+if (array_key_exists(12, $nombres)) {
+    echo 'La clé 12 existe';
+} else {
+    echo 'La clé 12 n\'existe pas';
+}
 
 // Vérifier qu'une valeur est dans un tableau
+$objets = ['stylo', 'gobelet', 'ordinateur', 'souris', 'echarpe', 'pochette'];
+
+// Comment savoir si 'souris' et 'adaptateur' sont dans le tableau $objets ?
+// On peut faire avec une boucle... mais il y a une fonction qui existe : in_array
+
+if (in_array('souris', $objets)) {
+    echo '<p>La souris est là</p>';
+}
+
+if (in_array('adaptateur', $objets)) {
+    echo '<p>L\'adaptateur est là</p>'; // Ne s'affiche pas
+}
+
+// Compter le nombre d'éléments
+echo 'Il y a ' . count($objets) . ' sur la table';
+
+// Exemple d'une fonction de tri, sort
+// Les fonctions de tri qui fonctionnent par référence
+echo '<pre>';
+print_r($objets);
+echo '</pre>';
+
+sort($objets); // Tri par ordre alphabétique
+
+echo '<pre>';
+print_r($objets);
+echo '</pre>';
+
+// Fonctions clés : count, in_array, array_key_exists, unset
+
+// A retenir, il y a énormément de fonctions natives à PHP pour manipuler des tableaux
+// => https://www.php.net/manual/fr/function.array.php
+// Tri, fusion des tableaux, recherche d'éléments avancée, 
