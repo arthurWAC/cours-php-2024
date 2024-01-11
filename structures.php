@@ -116,3 +116,231 @@ $attaquePokemon1 = match($typePokemon2) {
 };
 
 echo "<p>L'attaque est maintenant de $attaquePokemon1.</p>";
+
+
+// Les boucles
+
+// for, while, foreach
+
+// La somme des 100 premiers nombres
+
+$somme = 0;
+for ($i = 1; $i <= 100; $i++) {
+    $somme += $i;
+}
+
+echo "<p>Somme : $somme</p>";
+
+// Attention au nombre d'itérations
+// for ($i = 1; $i <= 100; $i++) // 100 itérations
+// for ($i = 0; $i <= 100; $i++) // 101 itérations
+// for ($i = 0; $i < 100; $i++) // 100 itérations
+// for ($i = 1; $i < 100; $i++) // 99 itérations
+
+// Incrémenter de 2 en 2
+// for ($i = 0; $i <= 100; $i += 2) // 50 itérations
+
+// Décrémenter
+// for ($i = 100; $i > 0; $i--) // 99 itérations
+
+// On peut utiliser d'autres variables
+$array = [1, 2, 3];
+$nbElements = count($array);
+for ($key = 0; $key < $nbElements; $key++) { // On évite de faire des opérations dans les conditions de la boucle
+
+}
+
+
+// foreach, toujours sur un tableau
+
+// foreach simple
+$objets = ['stylo', 'gobelet', 'ordinateur', 'souris', 'echarpe', 'pochette', 'telephone'];
+
+// Postulat de départ
+$jAiTrouveLaSouris = false;
+
+foreach ($objets as $objet) {
+    
+    if ($objet === 'souris') {
+        $jAiTrouveLaSouris = true;
+        // On peut utiliser un break
+        break;
+    }
+}
+
+
+// Postulat de départ
+$jAiTrouveLAdaptateur = false;
+
+foreach ($objets as $objet) {
+    
+    if ($objet === 'adaptateur') {
+        $jAiTrouveLAdaptateur = true; // Je passe jamais ici
+    }
+}
+
+// Postulat de départ
+$jAiTrouveLAPochette = false;
+
+foreach ($objets as $objet) {
+    
+    if ($objet !== 'pochette') {
+        continue;
+    }
+
+    $jAiTrouveLAPochette = true;
+}
+
+
+// foreach "compliqué"
+
+$moi = [
+    'prenom' => 'Arthur',
+    'nom' => 'Weill',
+    'age' => 36
+];
+
+// Je récupère à la fois la valeur ET la clé
+foreach ($moi as $key => $value) { // "$key =>" en plus
+    echo "<p><b>$key</b> : $value</p>";
+}
+
+
+// While
+// ATTENTION A LA BOUCLE INFINIE !!!!!!!!!!!
+
+$value = 0;
+$nbCoups = 0;
+
+// Bloqueurs !
+$bloqueur = 0;
+
+while ($value != 6) {
+
+    $nbCoups++;
+    $value = rand(1, 6); // Nombre aléatoire entre 1 et 6
+
+
+    // // Bloqueur -----
+    // $bloqueur++;
+    // if ($bloqueur > 10000) {
+    //     break;
+    // }
+    // // --------------
+}
+
+echo '<p>Il me faut ' . $nbCoups . ' lancés pour tomber sur un 6</p>';
+
+echo '<p>Bloqueur : ' . $bloqueur . '</p>';
+
+
+
+// While true
+
+// Bloqueurs !
+$bloqueur = 0;
+$nbCoups = 0;
+
+while (true) {
+
+    $nbCoups++;
+    $value = rand(1, 6); // Nombre aléatoire entre 1 et 6
+
+    if ($value === 6) {
+        break;
+    }
+    
+    // // Bloqueur -----
+    // $bloqueur++;
+    // if ($bloqueur > 10000) {
+    //     break;
+    // }
+    // // --------------
+}
+
+echo '<p>Il me faut ' . $nbCoups . ' lancés pour tomber sur un 6</p>';
+
+echo '<p>Bloqueur : ' . $bloqueur . '</p>';
+
+
+
+
+// do while intéressant, quand quoi qu'il arrive, le code doit s'executer au moins 1 fois
+// Comme pour générer un code secret, un token, etc.
+$nbCoups = 0;
+
+do {
+    $de = rand(1, 6);
+    $nbCoups++;
+
+} while ($de != 6);
+
+
+echo '<p>Il me faut ' . $nbCoups . ' lancés pour tomber sur un 6</p>';
+
+
+
+
+
+// COMPLEXITE CYCLOMATIQUE
+
+
+// V1 : continue
+// Postulat de départ
+$jAiTrouveLAPochette = false;
+
+foreach ($objets as $objet) {
+    
+    if ($objet !== 'pochette') {
+        continue;
+    }
+
+    $jAiTrouveLAPochette = true;
+}
+
+
+// V2 : break
+// Postulat de départ
+$jAiTrouveLAPochette = false;
+
+foreach ($objets as $objet) {
+    
+    if ($objet == 'pochette') {
+        $jAiTrouveLAPochette = true;
+        break;
+    }
+}
+
+
+
+// Trop d'imbrication des conditions
+if ($userAutorisation) {
+
+    if ($nbContenus >= 5) {
+
+        // Code intéressant
+        // ...
+        // ----------------
+
+    } else {
+        // Erreur 2
+    }
+} else {
+    // Erreur 1
+}
+
+// -----------------
+
+// Logique "inverse" sur les controles, code + clair
+
+if (! $userAutorisation) {
+    // Erreur 1 et le programme s'arrête
+}
+
+if ($nbContenus < 5) {
+    // Erreur 2 et le programme s'arrête
+}
+
+// Code intéressant
+// ...
+// ----------------
