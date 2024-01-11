@@ -34,3 +34,61 @@ echo "Je m'appelle $prenom et j'ai $age ans";
 echo '<br />';
 
 echo $prenomNom;
+
+// Calculs
+
+// Opérateurs simples
+
+$a = 1;
+$b = 2;
+
+$calcul = $a + $b; // Addition
+$calcul = $b - $a; // Soustraction
+
+$calcul = $a * $b; // Multiplication "*" "étoile"
+$calcul = $a / $b; // Division "/" "slash"
+
+$modulo = $b % $a; // Modulo, le reste de la division euclidienne
+// Sert beaucoup pour savoir si un nombre est pair ou impair
+// Ou multiple de X ?
+
+// On peut tout mélanger en même temps
+
+// On suit les règles classiques de priorité des calculs
+$calculComplexe = $a * $b + 23 - 12 * $b + $a + $calcul;
+
+// On peut utiliser des parenthèses
+$calculComplexe = $a * ($b + 23) - 12 * ($b + ($a + $calcul));
+
+$puissance = $b ** 2;
+$puissance = pow($b, 2);
+
+// Opérateurs condensés
+
+$start = 1;
+
+$start += 3; // Equivaut à $start = $start + 3;
+$start -= 2;
+$start *= 5;
+$start /= 3;
+
+// Opérateurs d'incrémentation/décrementation
+
+// Ajouter 1
+$start = 1;
+
+// Les 3 lignes sont équivalentes
+$start = $start + 1;
+$start += 1;
+$start++;
+
+// Idem avec --
+$start = $start - 1;
+$start -= 1;
+$start--;
+
+
+
+
+
+
