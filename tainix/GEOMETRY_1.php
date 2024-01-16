@@ -21,7 +21,10 @@ foreach ($shapes as $shape) {
     [$nom, $longueur] = explode('_', $shape);
     
     // 3. Je dois calculer le périmètre, selon la forme
-    $perimetre = $longueur * $nbSides[$nom]; 
+    $perimetre = perimetre(
+        longueurDuCote: $longueur,
+        nombreDeCote: $nbSides[$nom]
+    );
     
     // 4. Incrémenter ma somme
     $somme += $perimetre;
@@ -29,3 +32,17 @@ foreach ($shapes as $shape) {
 
 // 5. Je dois afficher ma somme
 echo $somme;
+
+
+function perimetre(int $longueurDuCote, int $nombreDeCote): int
+{
+    return $longueurDuCote * $nombreDeCote;
+}
+
+// 1. Le mot clé "function"
+// 2. Le nom de ma fonction, en camelCase, un nom le plus explicite possible
+// 3. Le ou les paramètres, avec leur type, et un nom explicite. Et si besoin des valeurs par défaut
+    // 3. bis TOUJOURS D'ABORD les paramètres obligatoires, puis les paramètres optionnels
+// 4. Le type de retour
+// 5. Les accolades, à la ligne
+// 6. Le code de la fonction, avec forcément le mot clé "return"
